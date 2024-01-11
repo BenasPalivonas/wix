@@ -1,0 +1,6 @@
+{
+	"name": "wix-app",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "wix-app",
+	"workspaceFolder": "/workspace"
+}

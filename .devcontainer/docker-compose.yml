@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  wix-app:
+    image: mcr.microsoft.com/devcontainers/javascript-node:1-20-buster
+    working_dir: /workspace
+    command: sleep infinity
+    user: node
+    volumes:
+      - ..:/workspace
+      - angular:/workspace/.angular
+      - node_modules:/workspace/node_modules
+    ports:
+      - 4200:4200
+      - 5000:5000
+
+volumes:
+  angular:
+  node_modules:
