@@ -11,8 +11,8 @@ services:
       - angular:/workspace/.angular
       - node_modules:/workspace/node_modules
     ports:
-      - 4200:4200
-      - 5000:5000
+      - "4200:4200"
+      - "5000:5000"
 
 volumes:
   angular:

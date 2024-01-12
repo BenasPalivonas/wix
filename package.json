@@ -4,7 +4,9 @@
   "license": "MIT",
   "scripts": {
     "serve": "nx serve wix-app",
-    "dev":"node ./backend/server.js"
+    "serve:container": "nx serve wix-app --host 0.0.0.0",
+    "dev": "node ./backend/server.js",
+    "test": " nx run-many --target=test --parallel"
   },
   "private": true,
   "dependencies": {
