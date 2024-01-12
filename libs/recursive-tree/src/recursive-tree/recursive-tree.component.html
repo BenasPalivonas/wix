@@ -1,6 +1,6 @@
 <ul>
     <li>
-        {{ node.name }}
+        - {{ node.name }}
         <button (click)="addNode.emit(node)">Add Node</button>
     </li>
     <ul *ngIf="node.children && node.children.length > 0">
