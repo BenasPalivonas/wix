@@ -15,7 +15,7 @@ describe('AppComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [AppComponent,
-        MockComponents(RecrusiveTreeComponent)], // Declare the component in the testing module
+        MockComponents(RecrusiveTreeComponent)],
     });
 
     fixture = TestBed.createComponent(AppComponent);

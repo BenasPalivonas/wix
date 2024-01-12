@@ -20,7 +20,7 @@ describe('RecrusiveTreeComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [RecrusiveTreeComponent], // Declare the component in the testing module
+      declarations: [RecrusiveTreeComponent],
     });
 
     fixture = TestBed.createComponent(RecrusiveTreeComponent);
