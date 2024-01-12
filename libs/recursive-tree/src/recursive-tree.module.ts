@@ -1,10 +1,10 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { RecrusiveTree } from "./recursive-tree.component";
+import { RecrusiveTreeComponent } from "./recursive-tree/recursive-tree.component";
 
 @NgModule({
     imports: [CommonModule],
-    declarations: [RecrusiveTree],
-    exports: [RecrusiveTree]
+    declarations: [RecrusiveTreeComponent],
+    exports: [RecrusiveTreeComponent]
 })
 export class WixAppRecursiveTreeModule { }

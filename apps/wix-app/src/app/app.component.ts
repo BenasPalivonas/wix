@@ -29,14 +29,16 @@ export class AppComponent {
   };
 
 
-  addChildNode(parentNode: any) {
+  addChildNode(parentNode: treeNode) {
     const newNodeName = prompt('Enter the name of the new node:');
-    if (newNodeName) {
-      const newNode = { name: newNodeName, children: [] };
-      parentNode.children.push(newNode);
+
+    if (!newNodeName) {
+      alert("Name can't be empty");
+      return;
     }
-  }
-  ngOnInit() {
-    console.log("hello");
+
+    const newNode: treeNode = { name: newNodeName, children: [] };
+    console.log(newNode)
+    parentNode.children.push(newNode);
   }
 }

@@ -1,26 +1,53 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { RouterTestingModule } from '@angular/router/testing';
+import { MockComponents } from 'ng-mocks';
+import { RecrusiveTreeComponent } from '@wix-app/rescursive-tree';
+import { treeNode } from '@wix-app/rescursive-tree-types';
 
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [AppComponent, RouterTestingModule],
-    }).compileComponents();
-  });
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+  const parentNode = {
+    name: 'ParentNode',
+    children: [],
+  };
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [AppComponent,
+        MockComponents(RecrusiveTreeComponent)], // Declare the component in the testing module
+    });
+
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    component.categoryTree = { name: "root", children: [] }
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Welcome wix-app'
-    );
   });
 
-  it(`should have as title 'wix-app'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('wix-app');
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should add a child node when calling addChildNode', () => {
+    // GIVEN
+    jest.spyOn(window, 'prompt').mockReturnValue('NewNode');
+    // WHEN
+    component.addChildNode(parentNode);
+    fixture.detectChanges();
+    // THEN
+    expect(parentNode.children.length).toBe(1);
+    const addedChildNode = parentNode.children[0] as treeNode;
+    expect(addedChildNode.name).toBe('NewNode');
+  });
+
+  it('should display an alert if prompt returns an empty string', () => {
+    // GIVEN
+    jest.spyOn(window, 'prompt').mockReturnValue('');
+    const alertSpy = jest.spyOn(window, 'alert');
+    // WHEN
+    component.addChildNode(parentNode);
+    // THEN
+    expect(component.categoryTree.children.length).toBe(0);
+    expect(alertSpy).toHaveBeenCalledWith("Name can't be empty");
   });
 });
