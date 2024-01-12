@@ -18,8 +18,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@wix-app/button": [
-        "libs/button/src/index.ts"
+      "@wix-app/rescursive-tree": [
+        "libs/recursive-tree/src/index.ts"
+      ],
+      "@wix-app/rescursive-tree-types": [
+        "libs/recursive-tree/src/types/index.ts"
       ]
     }
   },

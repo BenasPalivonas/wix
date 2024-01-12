@@ -1,5 +1,5 @@
 {
-  "name": "button",
+  "name": "recursive-tree",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/src",
   "prefix": "wix-app",
@@ -12,7 +12,7 @@
         "{workspaceRoot}/coverage/{projectRoot}"
       ],
       "options": {
-        "jestConfig": "libs/button/jest.config.ts"
+        "jestConfig": "libs/recursive-tree/jest.config.ts"
       }
     },
     "lint": {
