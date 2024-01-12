@@ -38,7 +38,6 @@ export class AppComponent {
     }
 
     const newNode: treeNode = { name: newNodeName, children: [] };
-    console.log(newNode)
     parentNode.children.push(newNode);
   }
 }
