@@ -21,8 +21,11 @@
       "@wix-app/rescursive-tree": [
         "libs/recursive-tree/src/index.ts"
       ],
+      "@wix-app/iterative-tree": [
+        "libs/iterative-tree/src/index.ts"
+      ],
       "@wix-app/rescursive-tree-types": [
-        "libs/recursive-tree/src/types/index.ts"
+        "libs/types/src/index.ts"
       ]
     }
   },

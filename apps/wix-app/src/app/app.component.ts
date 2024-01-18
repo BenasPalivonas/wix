@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { treeNode } from '@wix-app/rescursive-tree-types';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'wix-app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
 })
 
 export class AppComponent {
@@ -25,9 +25,8 @@ export class AppComponent {
           { name: 'Node 2.2', children: [] },
         ],
       },
-    ],
-  };
-
+    ]
+  }
 
   addChildNode(parentNode: treeNode) {
     const newNodeName = prompt('Enter the name of the new node:');

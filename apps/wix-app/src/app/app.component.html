@@ -1,7 +1,7 @@
 <div>
-    <h1>Tree</h1>
+    <h1>Recursive Mode</h1>
+    <wix-app-recursive-tree [node]="categoryTree" (addNode)="addChildNode($event)"></wix-app-recursive-tree>
 
-    <div id="categoryTree">
-        <wix-app-recursive-tree [node]="categoryTree" (addNode)="addChildNode($event)"></wix-app-recursive-tree>
-    </div>
+    <h1>Iterative Mode</h1>
+    <wix-app-iterative-tree [tree]="categoryTree" (addNode)="addChildNode($event)"></wix-app-iterative-tree>
 </div>

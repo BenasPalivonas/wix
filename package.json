@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "serve": "nx serve wix-app",
-    "serve:container": "nx serve wix-app --host 0.0.0.0",
+    "serve:container": "nx serve wix-app --host 0.0.0.0 --poll",
     "test": " nx run-many --target=test --parallel"
   },
   "private": true,
