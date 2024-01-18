@@ -3,6 +3,7 @@ import { AppComponent } from './app.component';
 import { MockComponents } from 'ng-mocks';
 import { RecrusiveTreeComponent } from '@wix-app/rescursive-tree';
 import { treeNode } from '@wix-app/rescursive-tree-types';
+import { IterativeTreeComponent } from '@wix-app/iterative-tree';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -15,7 +16,7 @@ describe('AppComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [AppComponent,
-        MockComponents(RecrusiveTreeComponent)],
+        MockComponents(RecrusiveTreeComponent, IterativeTreeComponent)],
     });
 
     fixture = TestBed.createComponent(AppComponent);
