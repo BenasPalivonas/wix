@@ -21,25 +21,61 @@ describe('IterativeTreeComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [IterativeTreeComponent],
-    });
+    }).compileComponents();
 
     fixture = TestBed.createComponent(IterativeTreeComponent);
     component = fixture.componentInstance;
-    component.node = categoryTree;
-    fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('addNode should call emit with provided node when calling addChildNode', () => {
-    // GIVEN
-    const addNodeSpy = jest.spyOn(component.addNode, 'emit');
-    const node: treeNode = { name: 'testNode', children: [] }
-    // WHEN
-    component.addChildNode(node);
-    // THEN
-    expect(addNodeSpy).toHaveBeenCalledWith(node);
+  it('should render tree items on initialization', () => {
+    const mockTree: treeNode = categoryTree;
+    component.tree = mockTree;
+
+    const renderIterativeSpy = jest.spyOn(component, 'renderIterative');
+
+    fixture.detectChanges();
+
+    expect(renderIterativeSpy).toHaveBeenCalledWith(mockTree, 0);
   });
+
+  it('should emit addNode event when addChildNode is called', () => {
+    const mockNode: treeNode = categoryTree;
+    const emitSpy = jest.spyOn(component.addNode, 'emit');
+    jest.spyOn(component, 'renderIterative').mockImplementation(jest.fn);
+
+    component.addChildNode(mockNode);
+
+    expect(emitSpy).toHaveBeenCalledWith(mockNode);
+  });
+
+  it('should render tree items correctly', () => {
+    const mockTree: treeNode = {
+      name: 'Root',
+      children: [
+        {
+          name: 'Category 1',
+          children: [
+            { name: 'Subcategory 1.1', children: [] },
+            { name: 'Subcategory 1.2', children: [] },
+          ],
+        },
+      ],
+    };
+
+    const expectedRenderedItems = [
+      { node: mockTree, depth: 0 },
+      { node: mockTree.children[0], depth: 1 },
+      { node: mockTree.children[0].children[0], depth: 2 },
+      { node: mockTree.children[0].children[1], depth: 2 },
+    ];
+
+    component.renderIterative(mockTree, 0);
+
+    expect(component.treeItems).toEqual(expectedRenderedItems);
+  });
+
 });
