@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { treeNode } from '@wix-app/rescursive-tree-types';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'wix-app-root',
