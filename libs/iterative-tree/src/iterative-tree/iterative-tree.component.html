@@ -1,5 +1,5 @@
 <div class="tree-body">
-    <div class="tree-node" *ngFor="let item of treeItems" [style.marginLeft.px]="item.depth * 20">
+    <div class="tree-node" *ngFor="let item of tree" [style.marginLeft.px]="item.depth * 20">
         - {{ item.node.name }}
         <button (click)="addChildNode(item.node)">Add Node</button>
     </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { treeNode } from '@wix-app/rescursive-tree-types';
 
 @Component({
@@ -6,7 +6,8 @@ import { treeNode } from '@wix-app/rescursive-tree-types';
   templateUrl: './app.component.html',
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
+
   categoryTree: treeNode = {
     name: 'Root',
     children: [
@@ -27,6 +28,12 @@ export class AppComponent {
     ]
   }
 
+  treeItems: { node: treeNode, depth: number }[] = [];
+
+  ngOnInit() {
+    this.treeItems = this.renderIterative(this.categoryTree, 0);
+  }
+
   addChildNode(parentNode: treeNode) {
     const newNodeName = prompt('Enter the name of the new node:');
 
@@ -37,5 +44,23 @@ export class AppComponent {
 
     const newNode: treeNode = { name: newNodeName, children: [] };
     parentNode.children.push(newNode);
+    this.treeItems = this.renderIterative(this.categoryTree, 0);
+  }
+
+  renderIterative(node: treeNode, depth: number): { node: treeNode, depth: number }[] {
+    const stack = [{ node, depth }];
+    const items = [];
+
+    while (stack.length > 0) {
+      const stackItem = stack.pop()!;
+
+      const { node, depth } = stackItem;
+      items.push({ node, depth });
+
+      for (let i = node.children.length - 1; i >= 0; i--) {
+        stack.push({ node: node.children[i], depth: depth + 1 });
+      }
+    }
+    return items;
   }
 }
